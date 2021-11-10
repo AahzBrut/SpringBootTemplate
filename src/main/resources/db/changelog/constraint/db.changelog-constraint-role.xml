@@ -11,10 +11,6 @@
                                  deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="ROLE_ID" referencedTableName="ROLE"/>
 
-        <createIndex tableName="ROLE" indexName="ROLE_PK_UIX">
-            <column name="PARENT_ID"/>
-        </createIndex>
-
     </changeSet>
 
 </databaseChangeLog>
