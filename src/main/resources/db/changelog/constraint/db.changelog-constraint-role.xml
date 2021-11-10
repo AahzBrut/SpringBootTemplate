@@ -5,11 +5,16 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet author="artemenko_pa" id="ROLE-001">
-        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="ROLE" baseTableSchemaName="REPOSITORY"
+
+        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="ROLE"
                                  constraintName="FK-ROLE-ROLE"
                                  deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
-                                 referencedColumnNames="ROLE_ID" referencedTableName="ROLE" referencedTableSchemaName="REPOSITORY"/>
-    </changeSet>
+                                 referencedColumnNames="ROLE_ID" referencedTableName="ROLE"/>
 
+        <createIndex tableName="ROLE" indexName="ROLE_PK_UIX">
+            <column name="PARENT_ID"/>
+        </createIndex>
+
+    </changeSet>
 
 </databaseChangeLog>

@@ -5,10 +5,13 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="master-001" author="artemenko_pa">
+
         <sql endDelimiter=";">
             CREATE SCHEMA IF NOT EXISTS REPOSITORY;
         </sql>
+
     </changeSet>
+
 
     <includeAll path="db/changelog/table"/>
     <includeAll path="db/changelog/constraint"/>
