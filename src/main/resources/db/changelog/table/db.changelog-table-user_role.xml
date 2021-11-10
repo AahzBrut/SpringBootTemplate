@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="artemenko_pa" id="USER_ROLE-001">
+        <createSequence schemaName="REPOSITORY" sequenceName="USER_ROLE_SEQ"/>
+    </changeSet>
+
+
+    <changeSet author="artemenko_pa" id="USER_ROLE-002">
+        <createTable schemaName="REPOSITORY" tableName="USER_ROLE">
+            <column name="USER_ROLE_ID" type="INT" defaultValueSequenceNext="USER_ROLE_SEQ">
+                <constraints primaryKey="true" primaryKeyName="USER_ROLE_PK"/>
+            </column>
+            <column name="ROLE_ID" type="SMALLINT"/>
+            <column name="USER_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

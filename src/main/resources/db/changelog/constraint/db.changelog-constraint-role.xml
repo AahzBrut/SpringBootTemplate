@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="artemenko_pa" id="ROLE-001">
+        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="ROLE" baseTableSchemaName="REPOSITORY"
+                                 constraintName="FK-ROLE-ROLE"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ROLE_ID" referencedTableName="ROLE" referencedTableSchemaName="REPOSITORY"/>
+    </changeSet>
+
+
+</databaseChangeLog>
