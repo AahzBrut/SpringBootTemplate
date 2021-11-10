@@ -5,20 +5,18 @@ import com.example.springboottemplate.dto.request.user.RoleAddRequest
 import com.example.springboottemplate.dto.response.user.RoleResponse
 
 
-fun Role.toRoleResponse(): RoleResponse {
-    return RoleResponse(
+fun Role.toRoleResponse(): RoleResponse =
+    RoleResponse(
         id = this.id,
         parentId = this.parentRole?.id,
         childRoles = this.childRoles.map { it.toRoleResponse() },
         name = this.name,
         description = this.description
     )
-}
 
-fun RoleAddRequest.toRole(): Role {
-    return Role(
+fun RoleAddRequest.toRole(): Role =
+    Role(
         parentRole = this.parentId?.let { Role(id = this.parentId) },
         name = this.name,
         description = this.description
     )
-}
