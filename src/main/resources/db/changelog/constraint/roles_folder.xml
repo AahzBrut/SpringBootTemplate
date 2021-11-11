@@ -1,0 +1,16 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="artemenko_pa" id="ROLES_FOLDER-001">
+
+        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="ROLES_FOLDER"
+                                 constraintName="FK-ROLES_FOLDER-ROLES_FOLDER"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ROLES_FOLDER_ID" referencedTableName="ROLES_FOLDER"/>
+
+    </changeSet>
+
+</databaseChangeLog>

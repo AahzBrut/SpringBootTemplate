@@ -5,14 +5,11 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet author="artemenko_pa" id="USER-001">
-
         <createSequence sequenceName="USER_SEQ"/>
-
     </changeSet>
 
 
     <changeSet author="artemenko_pa" id="USER-002">
-
         <createTable tableName="USER">
             <column name="USER_ID" type="INT" defaultValueSequenceNext="USER_SEQ">
                 <constraints primaryKey="true" primaryKeyName="USER_PK"/>
@@ -24,7 +21,6 @@
             <column name="EMAIL" type="VARCHAR(255)"/>
             <column name="DESCRIPTION" type="VARCHAR(255)"/>
         </createTable>
-
     </changeSet>
 
 

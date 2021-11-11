@@ -6,10 +6,10 @@
 
     <changeSet author="artemenko_pa" id="ROLE-001">
 
-        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="ROLE"
-                                 constraintName="FK-ROLE-ROLE"
+        <addForeignKeyConstraint baseColumnNames="FOLDER_ID" baseTableName="ROLE"
+                                 constraintName="FK-ROLE-ROLES_FOLDER"
                                  deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
-                                 referencedColumnNames="ROLE_ID" referencedTableName="ROLE"/>
+                                 referencedColumnNames="ROLES_FOLDER_ID" referencedTableName="ROLES_FOLDER"/>
 
     </changeSet>
 

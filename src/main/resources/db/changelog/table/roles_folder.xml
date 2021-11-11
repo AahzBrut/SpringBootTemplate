@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <changeSet author="artemenko_pa" id="ROLES_FOLDER-001">
+        <createSequence sequenceName="ROLES_FOLDER_SEQ"/>
+    </changeSet>
+
+
+    <changeSet author="artemenko_pa" id="ROLES_FOLDER-002">
+        <createTable tableName="ROLES_FOLDER">
+            <column name="ROLES_FOLDER_ID" type="INT" defaultValueSequenceNext="ROLES_FOLDER_SEQ">
+                <constraints primaryKey="true" primaryKeyName="ROLES_FOLDER_PK"/>
+            </column>
+            <column name="PARENT_ID" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+
+</databaseChangeLog>

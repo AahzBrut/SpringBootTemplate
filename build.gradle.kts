@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.6.0-SNAPSHOT"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id ("org.jetbrains.kotlin.plugin.allopen") version "1.5.31"
     kotlin("jvm") version "1.6.0-RC"
     kotlin("plugin.spring") version "1.6.0-RC"
     kotlin("plugin.jpa") version "1.6.0-RC"
@@ -35,6 +36,12 @@ dependencies {
     runtimeOnly("com.h2database:h2:1.4.200")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.5.6")
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.6")
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.Embeddable")
+    annotation("javax.persistence.MappedSuperclass")
 }
 
 tasks.withType<KotlinCompile> {

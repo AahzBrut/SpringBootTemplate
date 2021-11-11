@@ -4,17 +4,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <changeSet id="master-001" author="artemenko_pa">
 
-        <sql endDelimiter=";">
-            CREATE SCHEMA IF NOT EXISTS REPOSITORY;
-        </sql>
-
+    <changeSet author="artemenko_pa" id="ROLE-001">
+        <createIndex tableName="ROLE" indexName="FOLDER_ID_IX">
+            <column name="FOLDER_ID"/>
+        </createIndex>
     </changeSet>
 
-
-    <includeAll path="db/changelog/table"/>
-    <includeAll path="db/changelog/index"/>
-    <includeAll path="db/changelog/constraint"/>
 
 </databaseChangeLog>

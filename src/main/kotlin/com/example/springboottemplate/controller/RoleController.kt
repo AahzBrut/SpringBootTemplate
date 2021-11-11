@@ -1,7 +1,9 @@
 package com.example.springboottemplate.controller
 
 import com.example.springboottemplate.dto.request.user.RoleAddRequest
+import com.example.springboottemplate.dto.request.user.RolesFolderAddRequest
 import com.example.springboottemplate.dto.response.user.RoleResponse
+import com.example.springboottemplate.dto.response.user.RolesFolderResponse
 import com.example.springboottemplate.service.RoleService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -16,6 +18,10 @@ const val GetAllRoles = "/roles"
 const val AddRole = "/roles"
 const val DeleteRole = "/roles/{id}"
 const val GetRole = "/roles/{id}"
+
+const val GetRolesFolder = "/roles-folder/{id}"
+const val AddRolesFolder = "/roles-folder"
+const val DeleteRolesFolder = "/roles-folder/{id}"
 
 @RestController
 class RoleController(
@@ -44,5 +50,23 @@ class RoleController(
     @GetMapping(GetRole, produces = ["application/json"])
     fun getRole(@PathVariable id: Short) : RoleResponse {
         return roleService.getRole(id)
+    }
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @GetMapping(GetRolesFolder, produces = ["application/json"])
+    fun getRolesFolder(@PathVariable id: Int) : RolesFolderResponse {
+        return roleService.getFolder(id)
+    }
+
+    @ResponseStatus(code = HttpStatus.CREATED)
+    @PostMapping(AddRolesFolder, consumes = ["application/json"], produces = ["application/json"])
+    fun addRolesFolder(@RequestBody request: RolesFolderAddRequest) : RolesFolderResponse {
+        return roleService.addFolder(request)
+    }
+
+    @ResponseStatus(code = HttpStatus.OK)
+    @DeleteMapping(DeleteRolesFolder)
+    fun deleteRolesFolder(@PathVariable id: Int) {
+        roleService.deleteFolder(id)
     }
 }
