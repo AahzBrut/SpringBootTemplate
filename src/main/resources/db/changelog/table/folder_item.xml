@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <changeSet author="artemenko_pa" id="FOLDER_ITEM-001">
+        <createSequence sequenceName="FOLDER_ITEM_SEQ"/>
+    </changeSet>
+
+
+    <changeSet author="artemenko_pa" id="FOLDER_ITEM-002">
+        <createTable tableName="FOLDER_ITEM">
+            <column name="FOLDER_ITEM_ID" type="LONG" defaultValueSequenceNext="FOLDER_ITEM_SEQ">
+                <constraints unique="true" primaryKey="true" primaryKeyName="FOLDER_ITEM_PK"/>
+            </column>
+            <column name="FOLDER_ID" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
