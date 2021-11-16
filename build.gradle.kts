@@ -4,7 +4,7 @@ plugins {
     id("org.springframework.boot") version "2.6.0-SNAPSHOT"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id ("org.jetbrains.kotlin.plugin.allopen") version "1.5.31"
-    kotlin("jvm") version "1.6.0-RC"
+    kotlin("jvm") version "1.6.0"
     kotlin("plugin.spring") version "1.6.0-RC"
     kotlin("plugin.jpa") version "1.6.0-RC"
 }
@@ -30,8 +30,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.liquibase:liquibase-core:4.4.3")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
+    implementation("org.liquibase:liquibase-core:4.6.1")
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.6")
     runtimeOnly("com.h2database:h2:1.4.200")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.5.6")
