@@ -1,0 +1,16 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <changeSet author="artemenko_pa" id="ROLE-001">
+        <insert tableName="ROLE">
+            <column name="name" value="ADMIN"/>
+            <column name="description"><![CDATA[<h1>Administrator</h1><br/>Superuser]]></column>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

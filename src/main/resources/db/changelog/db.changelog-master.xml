@@ -16,5 +16,6 @@
     <includeAll path="db/changelog/table"/>
     <includeAll path="db/changelog/index"/>
     <includeAll path="db/changelog/constraint"/>
+    <includeAll path="db/changelog/data"/>
 
 </databaseChangeLog>

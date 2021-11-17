@@ -26,12 +26,20 @@ repositories {
 }
 
 dependencies {
+    implementation ("org.springframework.boot:spring-boot-starter-websocket:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
     implementation("org.liquibase:liquibase-core:4.6.1")
+
+    implementation ("org.webjars:webjars-locator-core:0.48")
+    implementation ("org.webjars:sockjs-client:1.5.1")
+    implementation ("org.webjars:stomp-websocket:2.3.4")
+    implementation ("org.webjars:bootstrap:5.1.1")
+    implementation ("org.webjars:jquery:3.6.0")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.6")
     runtimeOnly("com.h2database:h2:1.4.200")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.5.6")
