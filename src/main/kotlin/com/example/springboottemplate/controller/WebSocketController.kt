@@ -12,8 +12,6 @@ class WebSocketController {
     @MessageMapping("/chat")
     @SendTo("/topic/greetings")
     fun sendMessage(request: GreetingRequest) : GreetingResponse{
-        println("Received message: $request")
-        Thread.sleep(1000)
         return GreetingResponse("Hello, ${request.name}")
     }
 }
