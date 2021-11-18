@@ -18,8 +18,13 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
+        var sessionId = getSessionIdFromUrl(stompClient.ws._transport.url);
+        console.log('SessionId: ' + sessionId);
         stompClient.subscribe('/topic/greetings', function (greeting) {
             showGreeting(JSON.parse(greeting.body).message);
+        });
+        stompClient.subscribe('/user/' + sessionId + '/queue/notifications', function (greeting) {
+            showNotification(JSON.parse(greeting.body).message);
         });
     });
 }
@@ -38,6 +43,15 @@ function sendName() {
 
 function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
+}
+
+function showNotification(message) {
+    $("#notifications").append("<tr><td>" + message + "</td></tr>");
+}
+
+function getSessionIdFromUrl(url) {
+    var urlParts = url.split("/");
+    return urlParts[urlParts.length - 2];
 }
 
 $(function () {
