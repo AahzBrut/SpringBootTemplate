@@ -7,22 +7,19 @@ import org.springframework.messaging.handler.annotation.Header
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.messaging.simp.SimpMessagingTemplate
-import org.springframework.messaging.simp.user.SimpUserRegistry
 import org.springframework.stereotype.Controller
 import org.springframework.web.socket.messaging.SessionConnectedEvent
 import org.springframework.web.socket.messaging.SessionDisconnectEvent
+import org.springframework.web.socket.messaging.SessionSubscribeEvent
 
 @Controller
 class WebSocketController(
-    val messageTemplate: SimpMessagingTemplate,
-    val userRegistry: SimpUserRegistry
+    val messageTemplate: SimpMessagingTemplate
 ) {
 
     @MessageMapping("/chat")
     @SendTo("/topic/greetings")
     fun sendMessage(@Header(name = "simpSessionId") sessionId: String, request: GreetingRequest): GreetingResponse {
-
-        println("Users: ${userRegistry.users}")
 
         messageTemplate.convertAndSendToUser(
             sessionId,
@@ -41,5 +38,12 @@ class WebSocketController(
     @EventListener(SessionDisconnectEvent::class)
     fun handleSessionDisconnectEvent(event: SessionDisconnectEvent) {
         println("Session disconnected: ${event.message.headers["simpSessionId"]}")
+    }
+
+    @EventListener(SessionSubscribeEvent::class)
+    fun handleSessionSubscribeEvent(event: SessionSubscribeEvent){
+        val sessionId = event.message.headers["simpSessionId"].toString()
+        val topic = event.message.headers["simpDestination"].toString()
+        println("Session: $sessionId subscribed to topic: $topic")
     }
 }
