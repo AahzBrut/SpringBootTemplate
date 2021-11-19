@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.socket.messaging.SessionConnectedEvent
 import org.springframework.web.socket.messaging.SessionDisconnectEvent
 import org.springframework.web.socket.messaging.SessionSubscribeEvent
+import org.springframework.web.socket.messaging.SessionUnsubscribeEvent
 
 @Controller
 class WebSocketController(
@@ -30,20 +31,27 @@ class WebSocketController(
     }
 
     @EventListener(SessionConnectedEvent::class)
-    fun handleSessionConnectedEvent(event: SessionConnectedEvent) {
+    fun onSessionConnectedEvent(event: SessionConnectedEvent) {
         val sessionId = event.message.headers["simpSessionId"].toString()
         println("Session connected: $sessionId")
     }
 
     @EventListener(SessionDisconnectEvent::class)
-    fun handleSessionDisconnectEvent(event: SessionDisconnectEvent) {
+    fun onSessionDisconnectEvent(event: SessionDisconnectEvent) {
         println("Session disconnected: ${event.message.headers["simpSessionId"]}")
     }
 
     @EventListener(SessionSubscribeEvent::class)
-    fun handleSessionSubscribeEvent(event: SessionSubscribeEvent){
+    fun onSessionSubscribeEvent(event: SessionSubscribeEvent){
         val sessionId = event.message.headers["simpSessionId"].toString()
         val topic = event.message.headers["simpDestination"].toString()
         println("Session: $sessionId subscribed to topic: $topic")
+    }
+
+    @EventListener(SessionUnsubscribeEvent::class)
+    fun onSessionUnsubscribeEvent(event: SessionUnsubscribeEvent){
+        val sessionId = event.message.headers["simpSessionId"].toString()
+        val topic = event.message.headers["simpDestination"].toString()
+        println("Session: $sessionId unsubscribed from topic: $topic")
     }
 }
